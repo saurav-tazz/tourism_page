@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VistaVoyage | Contact Us</title>
+  <meta name="description" content="Contact VistaVoyage to plan your next tourism experience." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #08131f;
+      --card: rgba(12, 24, 37, 0.7);
+      --card-strong: rgba(8, 16, 25, 0.84);
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #f4f8fb;
+      --muted: rgba(244, 248, 251, 0.76);
+      --accent: #7ce0c3;
+      --accent-2: #ffb86b;
+      --accent-3: #78a8ff;
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.42);
+      --max: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(124, 224, 195, 0.18), transparent 24%),
+        radial-gradient(circle at 88% 14%, rgba(120, 168, 255, 0.2), transparent 24%),
+        radial-gradient(circle at 80% 88%, rgba(255, 184, 107, 0.14), transparent 24%),
+        linear-gradient(180deg, #06111b 0%, #0a1724 56%, #08111b 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      padding: 20px 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(9, 17, 26, 0.62);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-family: "Fraunces", serif;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      color: #082237;
+      box-shadow: 0 10px 24px rgba(124, 224, 195, 0.28);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 18px 0 12px;
+    }
+
+    .hero-wrap {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(124, 224, 195, 0.12), rgba(120, 168, 255, 0.1));
+      box-shadow: var(--shadow);
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    h1,
+    h2 {
+      font-family: "Fraunces", serif;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(2.1rem, 5vw, 3.8rem);
+      line-height: 1.04;
+      max-width: 12ch;
+    }
+
+    .hero p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 56ch;
+    }
+
+    .hero-image {
+      min-height: 260px;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(4, 17, 27, 0.14), rgba(4, 17, 27, 0.76)),
+        url("https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .main {
+      padding: 18px 0 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .form-card {
+      padding: 28px;
+    }
+
+    .form-card h2 {
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      margin-bottom: 8px;
+    }
+
+    .form-card p {
+      margin: 0 0 22px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    label {
+      display: grid;
+      gap: 7px;
+      font-size: 0.92rem;
+      color: rgba(244, 248, 251, 0.86);
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(6, 12, 19, 0.5);
+      color: var(--text);
+      border-radius: var(--radius-md);
+      padding: 13px 14px;
+      font: inherit;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(124, 224, 195, 0.66);
+      box-shadow: 0 0 0 3px rgba(124, 224, 195, 0.2);
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .btn {
+      justify-self: start;
+      border: 0;
+      cursor: pointer;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 800;
+      color: #071520;
+      background: linear-gradient(135deg, var(--accent-2), #ffd7a0);
+      box-shadow: 0 14px 32px rgba(255, 184, 107, 0.26);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(255, 184, 107, 0.34);
+    }
+
+    .info {
+      display: grid;
+      gap: 18px;
+    }
+
+    .info-card {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: var(--card-strong);
+    }
+
+    .info-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+    }
+
+    .info-card p,
+    .info-card a,
+    .info-card li {
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0;
+      text-decoration: none;
+    }
+
+    .info-card a:hover {
+      color: var(--text);
+    }
+
+    .info-card ul {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer {
+      margin: 8px 0 24px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(6, 12, 19, 0.74);
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .link-btn {
+      padding: 10px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.05);
+      font-weight: 700;
+    }
+
+    .link-btn:hover {
+      border-color: rgba(124, 224, 195, 0.44);
+    }
+
+    @media (max-width: 920px) {
+      .hero-wrap,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image {
+        min-height: 220px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        border-radius: 28px;
+        padding: 16px;
+      }
+
+      .hero-wrap,
+      .form-card,
+      .info-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="VistaVoyage home">
+        <span class="brand-mark">V</span>
+        <span>VistaVoyage</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#destinations">Destinations</a>
+        <a href="index.html#experiences">Experiences</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-wrap">
+        <div>
+          <span class="eyebrow">Contact us</span>
+          <h1>Let us plan your next journey.</h1>
+          <p>
+            Share your travel dates, preferred destinations, and budget range. Our team will reach
+            out with a personalized tourism itinerary built around your style.
+          </p>
+        </div>
+        <div class="hero-image" role="img" aria-label="Travel planning desk"></div>
+      </div>
+    </section>
+
+    <section class="main">
+      <div class="container grid">
+        <article class="card form-card">
+          <h2>Send an inquiry</h2>
+          <p>Fill out this quick form and we will get back to you within one business day.</p>
+
+          <form action="#" method="post">
+            <div class="row">
+              <label>
+                Full name
+                <input type="text" name="name" placeholder="Your name" required />
+              </label>
+              <label>
+                Email address
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+            </div>
+
+            <div class="row">
+              <label>
+                Phone number
+                <input type="tel" name="phone" placeholder="+1 555 000 0000" />
+              </label>
+              <label>
+                Preferred destination
+                <select name="destination" required>
+                  <option value="" selected disabled>Select destination</option>
+                  <option>Bali, Indonesia</option>
+                  <option>Kyoto, Japan</option>
+                  <option>Cape Town, South Africa</option>
+                  <option>Custom destination</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Travel details
+              <textarea name="details" placeholder="Tell us your travel dates, number of travelers, and the type of experience you want." required></textarea>
+            </label>
+
+            <button class="btn" type="submit">Submit Request</button>
+          </form>
+        </article>
+
+        <aside class="info">
+          <article class="info-card">
+            <h3>Contact details</h3>
+            <p>Email: <a href="mailto:hello@vistavoyage.travel">hello@vistavoyage.travel</a></p>
+            <p>Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+            <p>Office hours: Mon - Sat, 9:00 AM - 7:00 PM</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Why contact us?</h3>
+            <ul>
+              <li>Tailored itineraries based on your preferences</li>
+              <li>Handpicked stays, local guides, and activities</li>
+              <li>End-to-end support before and during your trip</li>
+            </ul>
+          </article>
+
+          <article class="info-card">
+            <h3>Need quick answers?</h3>
+            <p>Check our main page for featured destinations and travel inspiration, then contact us for a custom plan.</p>
+            <p style="margin-top: 10px;"><a class="link-btn" href="index.html">Back to Landing Page</a></p>
+          </article>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>VistaVoyage | Curated tourism experiences for modern explorers.</p>
+    <a class="link-btn" href="index.html">Home</a>
+  </footer>
+</body>
+</html>
