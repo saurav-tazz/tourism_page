@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VistaVoyage | Tourism Gallery</title>
+  <meta name="description" content="Explore a curated tourism photo gallery featuring beaches, mountains, cities, heritage sites, and adventure destinations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #08131f;
+      --surface: rgba(11, 22, 34, 0.74);
+      --surface-strong: rgba(8, 16, 25, 0.9);
+      --line: rgba(255, 255, 255, 0.13);
+      --text: #f4f8fb;
+      --muted: rgba(244, 248, 251, 0.74);
+      --accent: #7ce0c3;
+      --accent-2: #ffb86b;
+      --accent-3: #78a8ff;
+      --shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(124, 224, 195, 0.18), transparent 28%),
+        radial-gradient(circle at 78% 12%, rgba(120, 168, 255, 0.18), transparent 24%),
+        linear-gradient(180deg, #06111b 0%, #0b1a28 52%, #07111a 100%);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      padding: 20px 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(9, 17, 26, 0.66);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: #062033;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      box-shadow: 0 10px 30px rgba(124, 224, 195, 0.28);
+      font-family: "Fraunces", serif;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.96rem;
+      font-weight: 700;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform 0.2s ease;
+    }
+
+    .button.primary {
+      color: #06131d;
+      background: linear-gradient(135deg, var(--accent-2), #ffdca8);
+      box-shadow: 0 16px 34px rgba(255, 184, 107, 0.22);
+    }
+
+    .button.secondary {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--line);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 46px 0 26px;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 38px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.07);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Fraunces", serif;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      margin-top: 22px;
+      max-width: 9ch;
+      font-size: clamp(3.1rem, 8vw, 6rem);
+      line-height: 0.93;
+    }
+
+    .hero-copy p,
+    .section-title p,
+    .tile p,
+    .feature p,
+    .footer small {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .hero-copy p {
+      max-width: 56ch;
+      margin: 22px 0 0;
+      font-size: 1.04rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .hero-mosaic {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 128px;
+      gap: 14px;
+    }
+
+    .photo,
+    .tile-image {
+      position: relative;
+      overflow: hidden;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .photo {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .photo::after,
+    .tile-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(3, 12, 19, 0.05), rgba(3, 12, 19, 0.7));
+    }
+
+    .photo span {
+      position: absolute;
+      z-index: 1;
+      left: 16px;
+      right: 16px;
+      bottom: 14px;
+      font-weight: 800;
+      text-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+    }
+
+    .photo.large {
+      grid-column: span 4;
+      grid-row: span 3;
+    }
+
+    .photo.tall {
+      grid-column: span 2;
+      grid-row: span 3;
+    }
+
+    .photo.wide {
+      grid-column: span 3;
+      grid-row: span 2;
+    }
+
+    .section {
+      padding: 34px 0 18px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .section-title h2 {
+      margin-top: 12px;
+      font-size: clamp(2rem, 4vw, 3.1rem);
+    }
+
+    .section-title p {
+      max-width: 60ch;
+      margin: 0;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .filter {
+      padding: 10px 14px;
+      border: 1px solid rgba(124, 224, 195, 0.18);
+      border-radius: 999px;
+      color: #d9fff5;
+      background: rgba(124, 224, 195, 0.09);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .tile {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      transition: transform 0.24s ease, border-color 0.24s ease;
+    }
+
+    .tile:hover {
+      transform: translateY(-5px);
+      border-color: rgba(124, 224, 195, 0.3);
+    }
+
+    .tile-image {
+      min-height: 250px;
+    }
+
+    .tile-body {
+      padding: 20px;
+    }
+
+    .tile h3 {
+      margin-bottom: 8px;
+      font-size: 1.28rem;
+    }
+
+    .tile p {
+      margin: 0;
+      font-size: 0.96rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .feature-band {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .feature {
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background-position: center;
+      background-size: cover;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .feature::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(5, 13, 20, 0.06), rgba(5, 13, 20, 0.82));
+    }
+
+    .feature > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature h3 {
+      margin: 12px 0 8px;
+      font-size: 1.8rem;
+    }
+
+    .feature p {
+      margin: 0;
+      max-width: 46ch;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin: 34px auto 24px;
+      padding: 22px 26px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface-strong);
+      box-shadow: var(--shadow);
+    }
+
+    .footer strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .fade-up {
+      animation: fadeUp 0.85s ease both;
+    }
+
+    .delay-1 {
+      animation-delay: 0.08s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.16s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.24s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-layout,
+      .feature-band,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        min-height: auto;
+      }
+
+      .hero-mosaic {
+        grid-auto-rows: 120px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        border-radius: 28px;
+      }
+
+      .nav-links {
+        gap: 14px 18px;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero-copy {
+        padding: 22px;
+      }
+
+      h1 {
+        max-width: 10ch;
+        font-size: clamp(2.7rem, 16vw, 4.2rem);
+      }
+
+      .hero-mosaic {
+        grid-template-columns: 1fr;
+        grid-auto-rows: minmax(220px, auto);
+      }
+
+      .photo.large,
+      .photo.tall,
+      .photo.wide {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .tile-image {
+        min-height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="container nav fade-up">
+        <a class="brand" href="index.html" aria-label="VistaVoyage home">
+          <span class="brand-mark">V</span>
+          <span>VistaVoyage</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="index.html#destinations">Destinations</a>
+          <a href="index.html#experiences">Experiences</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="index.html#plan">Plan Trip</a>
+        </nav>
+        <a class="button primary" href="index.html#plan">Start Planning</a>
+      </div>
+    </header>
+
+    <main class="hero">
+      <div class="container hero-layout">
+        <section class="hero-copy fade-up delay-1">
+          <div>
+            <span class="eyebrow">Travel gallery</span>
+            <h1>Scenes that start the journey.</h1>
+            <p>
+              Browse a visual collection of coastlines, mountain trails, heritage streets,
+              and quiet escapes selected for travelers who want more than a standard itinerary.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#gallery">View Gallery</a>
+              <a class="button secondary" href="index.html">Back Home</a>
+            </div>
+          </div>
+          <p>
+            Every image represents a travel mood: slow mornings by the sea, bright city walks,
+            cultural landmarks, and wide-open landscapes worth crossing a map for.
+          </p>
+        </section>
+
+        <section class="hero-mosaic fade-up delay-2" aria-label="Featured travel photos">
+          <div class="photo large" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80');">
+            <span>Tropical Coastlines</span>
+          </div>
+          <div class="photo tall" style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80');">
+            <span>Mountain Retreats</span>
+          </div>
+          <div class="photo wide" style="background-image: url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=900&q=80');">
+            <span>River Journeys</span>
+          </div>
+          <div class="photo wide" style="background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80');">
+            <span>Iconic Cities</span>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-title fade-up delay-1">
+          <div>
+            <span class="eyebrow">Curated moments</span>
+            <h2>Explore by travel style.</h2>
+          </div>
+          <p>
+            A compact gallery for destination inspiration, from peaceful nature stays to
+            culture-rich city breaks and adventure routes.
+          </p>
+        </div>
+
+        <div class="filters fade-up delay-1" aria-label="Gallery categories">
+          <span class="filter">Beaches</span>
+          <span class="filter">Mountains</span>
+          <span class="filter">Culture</span>
+          <span class="filter">Adventure</span>
+          <span class="filter">Cities</span>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="tile fade-up delay-1">
+            <div class="tile-image" style="background-image: url('https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="tile-body">
+              <h3>Island Blue</h3>
+              <p>Clear water, quiet sandbars, and easy days made for slow travel.</p>
+              <div class="tag-row">
+                <span class="tag">Beach</span>
+                <span class="tag">Relaxation</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tile fade-up delay-2">
+            <div class="tile-image" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="tile-body">
+              <h3>Alpine Air</h3>
+              <p>High trails, crisp mornings, and lodges tucked into dramatic peaks.</p>
+              <div class="tag-row">
+                <span class="tag">Mountains</span>
+                <span class="tag">Hiking</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tile fade-up delay-3">
+            <div class="tile-image" style="background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="tile-body">
+              <h3>Heritage Walks</h3>
+              <p>Historic architecture, local markets, and stories layered through time.</p>
+              <div class="tag-row">
+                <span class="tag">Culture</span>
+                <span class="tag">Landmarks</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tile fade-up delay-1">
+            <div class="tile-image" style="background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="tile-body">
+              <h3>Cliffside Villages</h3>
+              <p>Whitewashed lanes, sunset terraces, and sea views around every corner.</p>
+              <div class="tag-row">
+                <span class="tag">Coast</span>
+                <span class="tag">Romantic</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tile fade-up delay-2">
+            <div class="tile-image" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="tile-body">
+              <h3>City Lights</h3>
+              <p>Skyline stays, late dinners, and energetic streets built for exploring.</p>
+              <div class="tag-row">
+                <span class="tag">City</span>
+                <span class="tag">Nightlife</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tile fade-up delay-3">
+            <div class="tile-image" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="tile-body">
+              <h3>Open Roads</h3>
+              <p>Scenic routes, flexible stops, and landscapes that reward curiosity.</p>
+              <div class="tag-row">
+                <span class="tag">Road Trip</span>
+                <span class="tag">Adventure</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="feature-band">
+          <article class="feature fade-up delay-1" style="background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80');">
+            <span class="eyebrow">Editor's pick</span>
+            <h3>Golden hour escapes</h3>
+            <p>Plan around softer light, slower meals, and a route that leaves room to wander.</p>
+          </article>
+          <article class="feature fade-up delay-2" style="background-image: url('https://images.unsplash.com/photo-1491557345352-5929e343eb89?auto=format&fit=crop&w=1200&q=80');">
+            <span class="eyebrow">Adventure mood</span>
+            <h3>Trails with a view</h3>
+            <p>For travelers who want fresh air, strong scenery, and a rewarding finish.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="container footer fade-up delay-2">
+      <div>
+        <strong>VistaVoyage Gallery</strong>
+        <small>Visual inspiration for your next tourism experience.</small>
+      </div>
+      <a class="button primary" href="mailto:hello@vistavoyage.travel">Request a Custom Plan</a>
+    </footer>
+  </div>
+</body>
+</html>
