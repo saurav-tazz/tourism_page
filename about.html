@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About VistaVoyage</title>
+  <meta name="description" content="Learn about VistaVoyage, our story, values, and the travel experience we create for modern explorers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #08131f;
+      --bg-soft: #0d2030;
+      --card: rgba(12, 24, 37, 0.72);
+      --card-strong: rgba(10, 18, 28, 0.9);
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #f4f8fb;
+      --muted: rgba(244, 248, 251, 0.76);
+      --accent: #7ce0c3;
+      --accent-2: #ffb86b;
+      --accent-3: #78a8ff;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(124, 224, 195, 0.18), transparent 28%),
+        radial-gradient(circle at 80% 18%, rgba(120, 168, 255, 0.22), transparent 24%),
+        radial-gradient(circle at 88% 84%, rgba(255, 184, 107, 0.16), transparent 22%),
+        linear-gradient(180deg, #06111b 0%, #0a1724 55%, #09111a 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.16;
+      pointer-events: none;
+      z-index: 0;
+      animation: float 16s ease-in-out infinite;
+    }
+
+    body::before {
+      left: -160px;
+      top: 8%;
+      background: var(--accent);
+    }
+
+    body::after {
+      right: -180px;
+      bottom: 4%;
+      background: var(--accent-2);
+      animation-delay: -7s;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      padding: 20px 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      background: rgba(9, 17, 26, 0.6);
+      backdrop-filter: blur(18px);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      box-shadow: 0 10px 30px rgba(124, 224, 195, 0.3);
+      display: grid;
+      place-items: center;
+      color: #062033;
+      font-family: "Fraunces", serif;
+      font-size: 1.05rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.96rem;
+      font-weight: 600;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] {
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), #9ef2df);
+      color: #062033;
+      text-decoration: none;
+      font-weight: 800;
+      box-shadow: 0 14px 30px rgba(124, 224, 195, 0.25);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(124, 224, 195, 0.32);
+    }
+
+    .hero {
+      padding: 34px 0 26px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-side,
+    .panel,
+    .card,
+    .footer {
+      border: 1px solid var(--line);
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      border-radius: var(--radius-xl);
+      padding: 38px;
+      overflow: hidden;
+      position: relative;
+      min-height: 560px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      color: var(--accent);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero h1,
+    .section-title h2,
+    .quote {
+      font-family: "Fraunces", serif;
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1 {
+      margin: 22px 0 18px;
+      font-size: clamp(3rem, 7vw, 5.2rem);
+      line-height: 0.95;
+      max-width: 10ch;
+    }
+
+    .hero p,
+    .section-title p,
+    .card p,
+    .footer p,
+    .detail-list p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 28px 0 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .button.primary {
+      color: #06131d;
+      background: linear-gradient(135deg, var(--accent-2), #ffdca8);
+      box-shadow: 0 18px 36px rgba(255, 184, 107, 0.23);
+    }
+
+    .button.secondary {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--line);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      padding: 18px 16px;
+      border-radius: 18px;
+      background: rgba(7, 14, 23, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-family: "Fraunces", serif;
+      font-size: 1.7rem;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .hero-side {
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      display: grid;
+      gap: 18px;
+      background: linear-gradient(180deg, rgba(12, 22, 34, 0.72), rgba(10, 19, 30, 0.84));
+    }
+
+    .feature-image {
+      min-height: 220px;
+      border-radius: 26px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(4, 17, 27, 0.15), rgba(4, 17, 27, 0.8)),
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .feature-badge {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(8, 19, 30, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      max-width: 76%;
+    }
+
+    .feature-badge strong {
+      font-size: 1rem;
+    }
+
+    .feature-badge span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .mini-panel {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mini-panel h2,
+    .section-title h2 {
+      margin: 0 0 10px;
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      letter-spacing: -0.03em;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(124, 224, 195, 0.1);
+      border: 1px solid rgba(124, 224, 195, 0.18);
+      color: #d6fff4;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .section {
+      padding: 18px 0 18px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .section-title p {
+      max-width: 60ch;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      border-radius: 26px;
+      overflow: hidden;
+      background: rgba(13, 24, 37, 0.68);
+    }
+
+    .card-body {
+      padding: 22px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.26rem;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .detail {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .detail strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .timeline-item strong {
+      font-family: "Fraunces", serif;
+      font-size: 1.1rem;
+    }
+
+    .year {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), #e4fff5);
+      color: #08131f;
+      font-weight: 800;
+    }
+
+    .panel {
+      margin-top: 22px;
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(120, 168, 255, 0.15), rgba(124, 224, 195, 0.12));
+    }
+
+    .panel strong {
+      display: block;
+      font-family: "Fraunces", serif;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      margin: 26px 0 24px;
+      border-radius: 30px;
+      padding: 22px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      background: rgba(7, 14, 23, 0.85);
+    }
+
+    .footer strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .footer small {
+      color: rgba(244, 248, 251, 0.56);
+    }
+
+    .fade-up {
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .fade-up.delay-1 {
+      animation-delay: 0.08s;
+    }
+
+    .fade-up.delay-2 {
+      animation-delay: 0.16s;
+    }
+
+    .fade-up.delay-3 {
+      animation-delay: 0.24s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(24px, -16px, 0) scale(1.04);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        min-height: auto;
+      }
+
+      .panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        border-radius: 28px;
+        padding: 16px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 14px 18px;
+      }
+
+      .hero-copy,
+      .hero-side,
+      .footer,
+      .panel,
+      .card-body,
+      .timeline-item,
+      .detail {
+        padding: 20px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.6rem, 16vw, 4.2rem);
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="container nav fade-up">
+        <a class="brand" href="index.html" aria-label="VistaVoyage home">
+          <span class="brand-mark">V</span>
+          <span>VistaVoyage</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="index.html#destinations">Destinations</a>
+          <a href="index.html#experiences">Experiences</a>
+          <a href="about.html" aria-current="page">About</a>
+          <a href="index.html#plan">Plan Trip</a>
+        </nav>
+        <a class="nav-cta" href="index.html#plan">Start Planning</a>
+      </div>
+    </header>
+
+    <main class="hero">
+      <div class="container hero-grid">
+        <section class="hero-copy fade-up delay-1">
+          <span class="eyebrow">About VistaVoyage</span>
+          <h1>We design trips that feel personal, calm, and memorable.</h1>
+          <p>
+            VistaVoyage is a travel studio focused on thoughtful journeys for curious explorers.
+            We pair local insight with elegant planning so your time away feels less like logistics
+            and more like discovery.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="index.html#destinations">View Destinations</a>
+            <a class="button secondary" href="mailto:hello@vistavoyage.travel">Contact Us</a>
+          </div>
+
+          <div class="hero-stats" aria-label="Company highlights">
+            <div class="stat">
+              <strong>2018</strong>
+              <span>Founded by travelers</span>
+            </div>
+            <div class="stat">
+              <strong>40+</strong>
+              <span>Countries covered</span>
+            </div>
+            <div class="stat">
+              <strong>1,200+</strong>
+              <span>Itineraries crafted</span>
+            </div>
+          </div>
+        </section>
+
+        <aside class="hero-side fade-up delay-2">
+          <div class="feature-image" role="img" aria-label="Travel planning and scenic destination"></div>
+          <div class="mini-panel">
+            <h2>Our approach</h2>
+            <p>
+              We start with your pace, your priorities, and the kind of moments you want to bring
+              home. Then we shape a route around them.
+            </p>
+            <div class="chips" aria-label="Core values">
+              <span class="chip">Local insight</span>
+              <span class="chip">Clear planning</span>
+              <span class="chip">Comfort first</span>
+              <span class="chip">Hidden gems</span>
+            </div>
+          </div>
+          <div class="feature-image" style="min-height: 190px; background-image: linear-gradient(180deg, rgba(4,17,27,0.14), rgba(4,17,27,0.72)), url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80');">
+            <div class="feature-badge">
+              <strong>Why travelers return</strong>
+              <span>Balanced itineraries with meaningful details, not just a checklist.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title fade-up delay-1">
+          <div>
+            <span class="eyebrow">What we value</span>
+            <h2>Travel should feel intentional.</h2>
+          </div>
+          <p>
+            We build each itinerary around three things: ease, authenticity, and enough space to
+            actually enjoy the destination.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card fade-up delay-1">
+            <div class="card-body">
+              <h3>Thoughtful planning</h3>
+              <p>Every route is shaped around real travel flow, not just a list of popular stops.</p>
+              <div class="detail-list">
+                <div class="detail">
+                  <strong>Less friction</strong>
+                  <p>We reduce backtracking, overpacking, and rushed transitions between activities.</p>
+                </div>
+                <div class="detail">
+                  <strong>Better pacing</strong>
+                  <p>Each day is designed to balance highlights with recovery time.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card fade-up delay-2">
+            <div class="card-body">
+              <h3>Meaningful experiences</h3>
+              <p>We look for places and moments that reveal the character of a destination.</p>
+              <div class="detail-list">
+                <div class="detail">
+                  <strong>Local flavor</strong>
+                  <p>We prioritize neighborhood dining, community-led tours, and distinct stays.</p>
+                </div>
+                <div class="detail">
+                  <strong>Memorable details</strong>
+                  <p>Small touches like scenic transfers and sunset timing elevate the whole trip.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card fade-up delay-3">
+            <div class="card-body">
+              <h3>Reliable support</h3>
+              <p>Travel feels easier when someone has already anticipated the small problems.</p>
+              <div class="detail-list">
+                <div class="detail">
+                  <strong>Planning support</strong>
+                  <p>We help before departure and stay available when plans need adjusting.</p>
+                </div>
+                <div class="detail">
+                  <strong>Clear recommendations</strong>
+                  <p>You get curated options instead of endless research tabs.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title fade-up delay-1">
+          <div>
+            <span class="eyebrow">Our story</span>
+            <h2>From a simple idea to a full travel studio.</h2>
+          </div>
+          <p>
+            VistaVoyage began as a small project to make trip planning feel less overwhelming and
+            more inspiring.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item fade-up delay-1">
+            <div class="year">2018</div>
+            <div>
+              <strong>The first itinerary</strong>
+              <p>We built a custom route for friends who wanted culture, food, and downtime in equal measure.</p>
+            </div>
+          </div>
+          <div class="timeline-item fade-up delay-2">
+            <div class="year">2021</div>
+            <div>
+              <strong>Growing the network</strong>
+              <p>We expanded our destination coverage and partnered with more local guides and boutique stays.</p>
+            </div>
+          </div>
+          <div class="timeline-item fade-up delay-3">
+            <div class="year">Today</div>
+            <div>
+              <strong>Curating with purpose</strong>
+              <p>We continue refining journeys that help travelers feel confident, unhurried, and connected.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel fade-up delay-2" style="margin-bottom: 6px;">
+          <div>
+            <strong>Ready to plan with a team that sees the details?</strong>
+            <p>Start with your destination, dates, and travel style. We will build a trip that feels like it belongs to you.</p>
+          </div>
+          <a class="button primary" href="mailto:hello@vistavoyage.travel">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="container footer fade-up delay-2">
+      <div>
+        <strong>VistaVoyage</strong>
+        <small>Curated tourism experiences for modern explorers.</small>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a class="button secondary" href="index.html">Back to home</a>
+        <a class="button primary" href="mailto:hello@vistavoyage.travel">hello@vistavoyage.travel</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
